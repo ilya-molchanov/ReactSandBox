@@ -6,6 +6,51 @@
     <title>Pure react</title>
 </head>
 <body>
-    <div id="root">test</div>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script>
+
+        const Book = (props) => {
+            // console.log(props);
+            /*
+            return React.createElement('div', {}, [                
+                React.createElement('h2', {}, props.name),
+                React.createElement('p', {}, props.year),
+                React.createElement('p', {}, props.price),
+            ]);
+            */
+
+            return (
+                <div>
+                    <h2>{props.name ? props.name : 'default name'}</h2>
+                    <p>{props.year}</p>
+                    <p>{props.price}</p>
+                </div>
+            );
+        };
+
+        const App = () => {
+            /*return React.createElement('div', {}, [
+                React.createElement('h1', {id: 'hello', className: 'class1'}, 'Hello, world from React!'),
+                React.createElement(Book, {name: 'JS for Everyone', year: 2018, price: 1000}),
+                React.createElement(Book, {name: 'JS for Beginners', year: 2020, price: 1200}),
+                React.createElement(Book, {name: 'Vue JS', year: 2019, price: 1100}),
+            ])*/
+            return <div>
+                <h1 id="hello" className="class1">Hello, world from React!</h1>
+                <Book name="JS for Everyone" year={2018} price={1000} />
+                <Book name="JS for Beginners" year={2020} price={1200} />
+                <Book name="Vue JS" year={2019} price={1100} />
+            </div>;
+        };
+
+        ReactDOM.render(
+            React.createElement(App),
+            document.getElementById('root')
+        );
+    </script>
 </body>
 </html>
